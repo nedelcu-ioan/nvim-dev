@@ -1,0 +1,12 @@
+local u = require('core.utils')
+
+u.map("n", "<C-h>", "<C-w><C-h>", "Move focus Left")
+u.map("n", "<C-l>", "<C-w><C-l>", "Move focus Right")
+u.map("n", "<C-j>", "<C-w><C-j>", "Move focus Down")
+u.map("n", "<C-k>", "<C-w><C-k>", "Move focus Up")
+u.map("n", "-", "<CMD>Oil<CR>", "Open parent directory")
+u.map("n", "<leader>sf", "<cmd>Telescope find_files<cr>", "Search Files")
+u.map("n", "<leader>sg", "<cmd>Telescope live_grep<cr>", "Live Grep")
+u.map("n", "<leader>km", "<cmd>Telescope keymaps<cr>", "Find Keybindings")
+u.map("n", "gw", function() require("flash").jump() end, "Flash Jump")
+u.map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Remove search highlights")
