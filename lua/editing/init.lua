@@ -5,6 +5,11 @@ u.map('n', '<leader>m', require('treesj').toggle, "Split/Join blocks")
 u.map("v", "<", "<gv", "Indent Left")
 u.map("v", ">", ">gv", "Indent Right")
 
+vim.keymap.set('n', '<M-Up>', ':resize +2<CR>', { desc = 'Resize split up' })
+vim.keymap.set('n', '<M-Down>', ':resize -2<CR>', { desc = 'Resize split down' })
+vim.keymap.set('n', '<M-Left>', ':vertical resize -2<CR>', { desc = 'Resize split left' })
+vim.keymap.set('n', '<M-Right>', ':vertical resize +2<CR>', { desc = 'Resize split right' })
+
 local ls = require("luasnip")
 u.map({"i", "s"}, "<C-K>", function()
     if ls.expand_or_jumpable() then ls.expand_or_jump() end
