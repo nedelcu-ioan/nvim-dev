@@ -5,7 +5,7 @@ local function compile_and_run_current_cpp_file()
         vim.cmd("w")
         local filename = vim.fn.expand("%")
         local output = vim.fn.expand("%:r")
-        local cmd = string.format("g++ -std=c++17 -Wall -o %s %s -g && ./%s", output, filename, output)
+        local cmd = string.format("g++ -std=c++23 -Wall -o %s %s -g && ./%s", output, filename, output)
         vim.cmd("terminal bash -c '" .. cmd .. "; echo; read -p \"--- Finished --- Press key...\" -n1'")
     end
 end
