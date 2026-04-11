@@ -29,4 +29,9 @@ vim.pack.add({
     { src = "https://github.com/mfussenegger/nvim-dap" },
     { src = "https://github.com/rcarriga/nvim-dap-ui" },
     { src = "https://github.com/jay-babu/mason-nvim-dap.nvim" },
+
+    -- Add these to your lsp / refactoring section
+    { src = "https://github.com/hrsh7th/nvim-cmp" },
+    { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
+    { src = "https://github.com/saadparwaiz1/cmp_luasnip" }
 })

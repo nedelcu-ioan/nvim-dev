@@ -7,9 +7,22 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show line diagnostics', buffer = bufnr })
 end
 
-local servers = { "clangd", "pyright", "ts_ls", "jdtls", "lua_ls" }
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local servers = {
+    "clangd",
+    "pyright",
+    "ts_ls",
+    "jdtls",
+    "lua_ls",
+}
+
 for _, server in ipairs(servers) do
-    vim.lsp.config(server, { on_attach = on_attach })
+    local config = {
+        on_attach = on_attach,
+        capabilities = capabilities
+    }
+    vim.lsp.config(server, config)
     vim.lsp.enable(server)
 end
 
@@ -21,4 +34,34 @@ vim.lsp.config('lua_ls', {
             workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
         },
     },
+})
+
+local cmp = require('cmp')
+local luasnip = require('luasnip')
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body)
+        end,
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), 
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+    })
 })
