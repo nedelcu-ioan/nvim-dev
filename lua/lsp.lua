@@ -15,6 +15,7 @@ local servers = {
     "ts_ls",
     "jdtls",
     "lua_ls",
+    "rust_analyzer",
 }
 
 for _, server in ipairs(servers) do

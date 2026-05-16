@@ -1,9 +1,7 @@
-local u = require('core.utils')
-
-u.map('n', '<leader>y', '<cmd>%y+<CR>', 'Yank entire buffer to clipboard')
-u.map('n', '<leader>m', require('treesj').toggle, "Split/Join blocks")
-u.map("v", "<", "<gv", "Indent Left")
-u.map("v", ">", ">gv", "Indent Right")
+vim.keymap.set('n', '<leader>y', '<cmd>%y+<CR>', { desc = 'Yank entire buffer to clipboard' })
+vim.keymap.set('n', '<leader>m', require('treesj').toggle,{ desc = "Split/Join blocks" })
+vim.keymap.set("v", "<", "<gv", { desc = "Indent Left" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent Right" })
 
 vim.keymap.set('n', '<M-Up>', ':resize +2<CR>', { desc = 'Resize split up' })
 vim.keymap.set('n', '<M-Down>', ':resize -2<CR>', { desc = 'Resize split down' })
@@ -11,9 +9,9 @@ vim.keymap.set('n', '<M-Left>', ':vertical resize -2<CR>', { desc = 'Resize spli
 vim.keymap.set('n', '<M-Right>', ':vertical resize +2<CR>', { desc = 'Resize split right' })
 
 local ls = require("luasnip")
-u.map({"i", "s"}, "<C-K>", function()
+vim.keymap.set({"i", "s"}, "<C-K>", function()
     if ls.expand_or_jumpable() then ls.expand_or_jump() end
-end, "Snippet Expand/Jump")
+end, { desc = "Snippet Expand/Jump" })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "typescript", "typescriptreact", "javascript" },

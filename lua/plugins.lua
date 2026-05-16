@@ -23,7 +23,7 @@ vim.pack.add({
     { src = "https://github.com/lewis6991/gitsigns.nvim"},
 
     -- snippets
-    { src = "https://github.com/L3MON4D3/LuaSnip",                 tag = "v2.*",     run = "make install_jsregexp" },
+    { src = "https://github.com/L3MON4D3/LuaSnip", tag = "v2.*", run = "make install_jsregexp" },
 
     -- debugging
     { src = "https://github.com/mfussenegger/nvim-dap" },
