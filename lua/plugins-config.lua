@@ -4,9 +4,14 @@ require("mini.surround").setup()
 require("telescope").setup({
     defaults = {
         layout_strategy = 'bottom_pane',
-        layout_config = { height = 0.4 },
-        border = true,
-    }
+        layout_config = { height = 0.5 },
+        border = false,
+    },
+    pickers = {
+        colorscheme = {
+            enable_preview = true
+        }
+    } 
 })
 require("mason").setup()
 require("mason-lspconfig").setup({

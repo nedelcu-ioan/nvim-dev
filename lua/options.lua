@@ -19,4 +19,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
-vim.cmd([[colorscheme vim]])
+vim.opt.laststatus = 0
+vim.opt.colorcolumn = "69"
+vim.cmd([[colorscheme torte]])
