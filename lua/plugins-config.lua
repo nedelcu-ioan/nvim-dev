@@ -1,4 +1,12 @@
-require("oil").setup()
+require("oil").setup({
+    columns = {
+        "permissions",
+        "size"
+    },
+    view_options = {
+        show_hidden = true
+    }
+})
 require("flash").setup()
 require("mini.surround").setup()
 require("telescope").setup({
